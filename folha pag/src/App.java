@@ -12,8 +12,7 @@ public class App {
         String vale = "";
         String idavolta = "";
         double tarifa = 0;
-        float descanso = 0;
-        String descanso1 = "";
+        float descanso = 0;       
         String insalubridade = "";
         String insalubridade1 = "";
 
@@ -38,16 +37,21 @@ public class App {
         System.out.println("O trabalhador possui Periculosidade ?");
         String periculosidade = sc.next();
         sc.nextLine();
-        System.out.println("O trabalhador possui insalubridade?");
-        insalubridade = sc.next();
+        if (periculosidade.equals("nao")){
+            System.out.println("O trabalhador possui insalubridade?");
+            insalubridade = sc.next();
+        }
+        
+        
         if (insalubridade.equals("sim")) {
+            sc.nextLine();
             System.out.println("Qual é o nivel da insalubridade? ");
-            insalubridade1 = sc.nextLine();
+            insalubridade1 = sc.next();
         }
                 
         double inssvalor = Calcinss.calcularInss(salariobruto, clt);
         String resultado = CalculadoraSalario.calcularSalarioHora(salariobruto, cargahoraria, periculosidade,
-                descanso, insalubridade, insalubridade1, diasdomes, tarifa, idavolta, valordescontoali,consumido,valeali,descontovaleali);
+                descanso, insalubridade, insalubridade1, diasdomes, tarifa, idavolta, valordescontoali,consumido,valeali,descontovaleali,clt);
 
         if (clt.equals("nao")) {
             
@@ -109,12 +113,7 @@ public class App {
                     System.out.println("Qual vai ser o valor do desconto");
                     valordescontoali = sc.nextDouble();                    
                 }
-            
-                else if (descontovaleali.equals("nao")){
-                    double valorvale = calcvaleali.calcvaleali(diasdomes, consumido, descontovaleali);
-                    System.out.println("o valor do Vale Transporte:" + valorvale);
-                }
-
+                          
             } 
         
                 
@@ -130,7 +129,8 @@ public class App {
                 System.out.println("Nome:" + nome);
                 System.out.println("Data de Admissão: " +  data);
                 System.out.println("Mês de Referência: "+ mes);
-                System.out.println("Cargo: " + cargo);                
+                System.out.println("Cargo: " + cargo);  
+                System.out.println("valor do INSS: " + inssvalor);              
 
                 System.out.println(resultado);
                 

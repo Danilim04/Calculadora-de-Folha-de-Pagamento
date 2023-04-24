@@ -1,10 +1,10 @@
 public class Calcirrf {
-    public static double calcularIRRF(double salariobruto,double inssvalor) {
+    public static double calcularIRRF(double salariobruto,double inssvalor,String clt) {
         double salarioBase = salariobruto - inssvalor;
         double irrf = 0;
         double aliquota = 0;
         double deducao = 0;
-    
+    if (clt.equals("sim")){
         if (salarioBase <= 1903.98) {
             aliquota = 0;
             deducao = 0;
@@ -27,7 +27,7 @@ public class Calcirrf {
         if (irrf < 0) {
             irrf = 0;
         }
-    
+    }
         return irrf;
     }
 }
